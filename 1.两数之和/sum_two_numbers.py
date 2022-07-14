@@ -19,4 +19,4 @@ class Solution:
 
 
 if __name__ == "__main__":
-    Solution.twoSum([3,2,3], 6)
+    print(Solution.twoSum([3,2,3], 6))
