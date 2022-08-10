@@ -1,10 +1,15 @@
 class Solution:
-    def rotate(nums, k) -> None:
+    def rotate(self, nums, k) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-        n = len(nums)
-        for i in range(n):
-            temp = nums[n-1]
-            nums[n-1] = nums[i]
-            nums[n] = temp
+        for i in range(k):
+            self.trans(nums)
+
+    def trans(self, nums):
+        nums_len = len(nums)
+        for i in range(nums_len - 1, 0, -1):
+            temp = nums[i - 1]
+            nums[i - 1] = nums[i]
+            nums[i] = temp
+

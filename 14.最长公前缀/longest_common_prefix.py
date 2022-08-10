@@ -1,22 +1,23 @@
 class Solution:
-    def longest_common_prefix(strs):
-        lens = len(strs)
-        result = ""
-        dict = {}
-        for i in strs[0]:
-            dict[i] = 1
-        for j in range(1, lens):
-            for k in strs[j]:
-                if k in dict.keys():
-                    dict[k] += 1
-        for key, value in dict.items():
-            if value == lens:
-                result += key
-            else:
-                return result
-        return result
+    def longest_common_prefix(self, strs):
+        if not strs:
+            return ''
+        prefix, count = strs[0], len(strs)
+        for i in range(1, count):
+            prefix = self.lcp(prefix, strs[i])
+            if not prefix:
+                break
 
+        return prefix
+
+
+    def lcp(self, prefix, str2):
+        length, index = min(len(prefix), len(str2)), 0
+        while index < length and prefix[index] == str2[index]:
+            index += 1
+
+        return prefix[:index]
 
 if __name__ == "__main__":
-    strs = ["aa", "aa", "aa"]
+    strs = ["cir","car"]
     print(Solution.longest_common_prefix(strs))
